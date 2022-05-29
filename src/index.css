@@ -1,10 +1,100 @@
-html {
+:root {
+    --light-green: #D0E3CC;
+    --light-yellow: #F7FFDD;
+    --lemon-yellow: #FCFDAF;
+    --buff: #EFD780;
+    --earth-yellow: #DBA159;
+}
+
+html, body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: sans-serif;
+
+}
+
+body {
+    background-color: var(--light-green);
 }
 
 *, *::before, *::after {
     box-sizing: inherit;
+
 }
 
+/* ---CHATBOX FRAME--- */
+
+.current-user-box {
+    display: inline-block;
+    width: 100%;
+
+}
+
+.current-user-box p {
+    margin:10px 5%;
+    text-align: center;
+
+}
+
+.outer-chatbox {
+    border: 0.6vh solid black;
+    border-radius: 30px;
+    margin: auto;
+    width: 75%;
+    height: 90vh;
+    margin-top: 5vh;
+    background-color: var(--earth-yellow);
+
+}
+
+.chatbox {
+    border: 0.6vh solid black;
+    border-radius: 30px;
+    width: 90%;
+    height: 85%;
+    margin-left: 5%;
+    background-color: var(--lemon-yellow)
+
+}
+
+/* ---CHATBOX INPUT--- */
+
+.chat-input {
+    margin: auto;
+    width: 90%;
+    height: 10%;
+}
+
+.chat-textbox-box {
+    background-color: var(--light-yellow);
+    border: 0.5vh solid black;
+    border-radius: 30px;
+    display: inline-block;
+    width: 76%;
+    height: 50%;
+    margin-top: 10px;
+    margin-right: 3%;
+}
+
+.chat-textbox {
+    background-color: transparent;
+    border: none;
+    width: 96%;
+    height: 100%;
+    margin-left: 2%;
+    
+}
+
+input:focus {
+    outline: none;
+}
+
+.chat-button {
+    border: 0.5vh solid black;
+    border-radius: 30px;
+    background-color: var(--buff);
+    width: 21%;
+    height: 50%;
+
+}
