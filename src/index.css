@@ -5,10 +5,16 @@
     --buff: #EFD780;
     --earth-yellow: #DBA159;
 }
+#root {
+    width: 100%;
+    height: 100%;
+}
 
 html, body{
     margin: 0;
     padding: 0;
+    width: 100%;
+    height: 100%;
     box-sizing: border-box;
     font-family: sans-serif;
 
@@ -23,36 +29,60 @@ body {
 
 }
 
+/* ---SCROLL BAR--- */
+
+.chatbox::-webkit-scrollbar {
+    width: 10px;
+}
+
+.chatbox::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.chatbox::-webkit-scrollbar-thumb {
+    background: var(--buff);
+    border-radius: 10px;
+}
+
+
 /* ---CHATBOX FRAME--- */
 
 .current-user-box {
     display: inline-block;
     width: 100%;
+    height: 30px;
 
 }
 
 .current-user-box p {
-    margin:10px 5%;
+    margin-top: 7px;
+    margin-bottom: 0;
+    width: 100%;
+    height: auto;
     text-align: center;
 
 }
 
 .outer-chatbox {
-    border: 0.6vh solid black;
+    display: flex;
+    flex-direction: column;
+    border: 3px solid black;
     border-radius: 30px;
-    margin: auto;
+    margin:auto;
     width: 75%;
-    height: 90vh;
+    height: 90%;
     margin-top: 5vh;
+    margin-bottom: 5vh;
     background-color: var(--earth-yellow);
 
 }
 
 .chatbox {
-    border: 0.6vh solid black;
-    border-radius: 30px;
+    overflow-y: scroll;
+    flex: 1;
+    border: 3px solid black;
+    border-radius: 30px 10px 10px 30px;
     width: 90%;
-    height: 85%;
     margin-left: 5%;
     background-color: var(--lemon-yellow)
 
@@ -63,17 +93,18 @@ body {
 .chat-input {
     margin: auto;
     width: 90%;
-    height: 10%;
+    height: 56px;
 }
 
 .chat-textbox-box {
     background-color: var(--light-yellow);
-    border: 0.5vh solid black;
+    border: 3px solid black;
     border-radius: 30px;
     display: inline-block;
     width: 76%;
-    height: 50%;
-    margin-top: 10px;
+    height: 30px;
+    margin-top: 13px;
+    margin-bottom: 13px;
     margin-right: 3%;
 }
 
@@ -91,10 +122,59 @@ input:focus {
 }
 
 .chat-button {
-    border: 0.5vh solid black;
+    border: 3px solid black;
     border-radius: 30px;
     background-color: var(--buff);
     width: 21%;
-    height: 50%;
+    height: 30px;
 
+}
+
+/* ---Message Bubbles--- */
+
+.msg-block {
+
+    display: flex;
+    flex-direction: row;
+}
+
+.msg-interior {
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+
+}
+
+.msg-general {
+    max-width: 50%;
+    background-color: #F4D35E;
+    border-radius: 30px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.msg-user {
+    margin-left: auto;
+    margin-right: 1%;
+
+}
+
+.msg-other {
+    margin-right: auto;
+    margin-left: 1%;
+
+}
+
+.msg-text {
+    margin-top: 10px;
+    margin-bottom: 0;
+
+}
+
+.msg-time {
+    color: grey;
+    margin-top: 0;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    text-align: right;
 }
