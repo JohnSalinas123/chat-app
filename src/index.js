@@ -1,84 +1,18 @@
-import { toHaveFocus } from '@testing-library/jest-dom/dist/matchers';
-import React from 'react';
-import ReactDOM from 'react-dom/client'
+import * as React from "react";
+import ReactDom from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import './index.css'
+//import "./index.css";
+import { App } from "./App";
+//import reportWebVitals from "./reportWebVitals";
 
+const root = ReactDom.createRoot(
+    document.getElementById("root")
+);
 
-class ChatApp extends React.Component {
-
-
-    renderMessage(message,time) {
-
-    }
-
-
-    render() {
-
-        return (
-            
-            <div className="outer-chatbox">
-                <CurrentUser userName="John Salinas" />
-
-                <div className="chatbox">
-                    <MessageBubble message="Alright its set then!" owner={true} />
-                    <MessageBubble message="Yeah I'm down!" owner={false} />
-                    <MessageBubble message="Hey, is anyone down to play civ 5?
-                    I want to try out that new strategy with the french.
-                    The french weaponry is superior during this new path." owner={true}/>
-
-                </div>
-                <ChatInput />
-            </div>
-        )
-    }
-
-}
-
-function CurrentUser(props) {
-
-    return (
-        <div className="current-user-box">
-            <p>Welcome {props.userName}!</p>
-        </div>
-    )
-
-}
-
-function ChatInput() {
-
-    return (
-        <div className="chat-input">
-            <div className="chat-textbox-box">
-                <input className="chat-textbox" type="text"/>
-            </div>
-            <input className="chat-button" type="submit" value="Send" />
-        </div>
-    )
-}
-
-function MessageBubble(props) {
-    let dateObj= new Date();
-    let msgTime = dateObj.toLocaleTimeString();
-    let msgDate = dateObj.toLocaleDateString();
-
-    let ownerClass = "msg-user";
-    if (props.owner == false) {
-        ownerClass = "msg-other";
-    }
-
-    return (
-        <div className="msg-block">
-            <div className={`msg-general ${ownerClass}`}>
-                <div className="msg-interior">
-                    <p className="msg-text">{props.message}</p>
-                    <p className="msg-time">{`${msgDate}   ${msgTime}`}</p>
-                </div>
-            </div>
-        </div>
-        
-    )
-}
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<ChatApp />)
+root.render (
+    <React.StrictMode>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+    </React.StrictMode>
+)
