@@ -1,0 +1,31 @@
+/* ---Login Box--- */
+
+.login-box-outer {
+    border: 3px solid black;
+    border-radius: 30px;
+    margin: auto;
+    width: 300px;
+    height: 150px;
+}
+
+.login-box-inner {
+    display: inline-block;
+    width: 90%;
+    height: 70%;
+    margin-left: 5%;
+    margin-top: 10%;
+}
+
+.input-box {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.input-box label {
+    width: 100px;
+}
+
+.login-button {
+    margin: auto;
+    
+}

@@ -1,9 +1,10 @@
-import React from 'react';
+import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './chat.css'
-
+import '../styles/chat.css'
+import { username } from './login.js'
 
 export class ChatApp extends React.Component {
+
 
 
     renderMessage(message,time) {
@@ -16,7 +17,7 @@ export class ChatApp extends React.Component {
         return (
             
             <div className="outer-chatbox">
-                <CurrentUser userName="John Salinas" />
+                <CurrentUser userName={username} />
 
                 <div className="chatbox">
                     <MessageBubble message="Alright its set then!" owner={true} />
