@@ -1,32 +1,29 @@
 import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
-import "./general.css"
-import { ChatApp } from "./chat.js"
+import "./styles/general.css"
+import { ChatApp } from "./pages/chat.js"
+import { Login } from "./pages/login.js"
 
 export function App() {
     return (
         <div className="full-size">
             <Routes>
-               <Route path="/" element={<Login />} />
-               <Route path="/chat" element={<Chat />} />
+               <Route path="/" element={<LoginPage />} />
+               <Route path="/chat" element={<ChatPage />} />
             </Routes>
         </div>
     )
 }
 
-function Login() {
+function LoginPage() {
 
     return (
-        <div>
-            <nav>
-                <Link to="/chat">Home</Link>
-            </nav>
-        </div>
+        <Login />
     )
 
 }
 
-function Chat() {
+function ChatPage() {
 
     return (
         <ChatApp />
