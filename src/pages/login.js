@@ -17,7 +17,7 @@ export function Login() {
         if (username == "") {
             return;
         }
-        navigate("./chat", { replace: true})
+        navigate("./chat", { replace: true, state: {name: username}})
     };
 
     return (

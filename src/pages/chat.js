@@ -1,36 +1,36 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import '../styles/chat.css'
-import { username } from './login.js'
-
-export class ChatApp extends React.Component {
+import  { useLocation } from "react-router-dom"
 
 
+export function ChatApp() {
 
-    renderMessage(message,time) {
+    const { state } = useLocation();
+    const { name } = state;
 
-    }
+    //renderMessage(message,time) {
 
+    //}
 
-    render() {
+    return (
+        
+        <div className="outer-chatbox">
+            <CurrentUser userName={name} />
 
-        return (
-            
-            <div className="outer-chatbox">
-                <CurrentUser userName={username} />
+            <div className="chatbox">
+                <MessageBubble message="Alright its set then!" owner={true} />
+                <MessageBubble message="Yeah I'm down!" owner={false} />
+                <MessageBubble message="Hey, is anyone down to play civ 5?
+                I want to try out that new strategy with the french.
+                The french weaponry is superior during this new path." owner={true}/>
 
-                <div className="chatbox">
-                    <MessageBubble message="Alright its set then!" owner={true} />
-                    <MessageBubble message="Yeah I'm down!" owner={false} />
-                    <MessageBubble message="Hey, is anyone down to play civ 5?
-                    I want to try out that new strategy with the french.
-                    The french weaponry is superior during this new path." owner={true}/>
-
-                </div>
-                <ChatInput />
             </div>
-        )
-    }
+            <ChatInput />
+        </div>
+
+    )
+    
 
 }
 
