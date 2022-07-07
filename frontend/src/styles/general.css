@@ -1,6 +1,42 @@
-.full-size {
+:root {
+    --darkest: #3C3744;
+    --darker: #003459;
+    --dark: #090C9B;
+    --normal: #3D52D5;
+    --light: #B4C5E4;
+    --lighter: #007EA7;
+    --lightest: #FBFFF1;
+}
+#root {
     width: 100%;
     height: 100%;
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+html, body{
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    font-family: sans-serif;
+
+}
+
+body {
+    background-color: var(--normal);
+}
+
+#root-div {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
 }
 
 .center {
@@ -10,4 +46,12 @@
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+}
+
+.center-text {
+    text-align: center;
+}
+
+.full-width {
+    width: 100%;
 }
