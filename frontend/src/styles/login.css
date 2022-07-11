@@ -7,7 +7,7 @@
     box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
     margin: auto;
     width: 280px;
-    height: 350px;
+    height: 365px;
     display: grid;
     place-items: center;
 }
@@ -28,12 +28,18 @@
 .login-switch {
     width: 50%;
     height: 40px;
-    margin-bottom: 20px;
 }
 
 .switch-selected {
     background-color: var(--dark);
     color: #fff
+}
+
+.report-box {
+    height: 30px;
+    width: 100%;
+    line-height: 30px;
+    color: red;
 }
 
 .field {
