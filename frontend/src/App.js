@@ -1,8 +1,8 @@
 import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import "./styles/general.css"
-import { ChatApp } from "./pages/chatPage/chatApp.js"
-import { Login } from "./pages/loginPage/login.js"
+import { ChatApp } from "./pages/chat.js"
+import { Login } from "./pages/login.js"
 import { socket, SocketContext } from "./context/socket.js";
 
 export function App() {
