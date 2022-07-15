@@ -1,7 +1,8 @@
-import React, {useState, useContext, useEffect} from 'react'
-import '../styles/login.css'
+import React, {useState, useContext, useEffect} from 'react';
+import '../styles/login.css';
 import { useNavigate} from 'react-router-dom';
-import { SocketContext } from '../context/socket'
+import { SocketContext } from '../context/socket';
+import axios from 'axios';
 
 export function Login() {
 
@@ -46,33 +47,69 @@ export function Login() {
     };
 
     const handleClick = () => {
-        
-        // stop if fields are empty
-        if (username == "") {
-            return;
-        }
 
-        // login or signup
-        const emitName = loginMode ? "login" : "signup";
+        // login user
+        if (loginMode) {
 
-        socket.emit(`${emitName}`, {
-            username: username,
-            password: password,
-        }, (response) => {
-            console.log(response.valid);
 
-            if (response.valid == true) {
-                console.log("Login successful!");
-                navigate("./chat", { replace: true, state: {name: username}});
+            
+
+        // register user
+        } else {
+
+            // check if all fields are filled or password match
+            if (!username || !password || !confirm) {
+                setAlert("All fields required!");
+                return;
+            } else if (password != confirm) {
+                setAlert("Passwords don't match!");
                 return;
             }
 
-            setAlert(response.reason)
 
-            console.log(`${loginMode ? "Login failed!" : "Sign up failed!"}`)
+            const registerUser = async () => {
+                try {
 
-        })
-        
+                    const config = {
+                        headers: {
+                            "Content-type" : "application/json",
+                        },
+                    }
+
+                    const { data } = await axios.post(
+                        '/api/user',
+                        {
+                            username,
+                            password
+                        },
+                        config
+                    );
+
+                    console.log(data);
+                    console.log(data.id);
+                    console.log(data.username);
+                   
+                    navigate('/chat', { 
+                        replace: false, 
+                        state: {
+                            id: data.id,
+                            username: data.username,
+                        },
+                    });
+                
+                } catch (error) {
+
+                    if (error.response) {
+                        setAlert(error.response.data.reason)
+                    }
+
+                }
+            }
+
+            registerUser();
+
+
+        }        
         
     };
 
