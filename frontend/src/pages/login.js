@@ -48,23 +48,62 @@ export function Login() {
 
     const handleClick = () => {
 
+        // check if all fields are filled or password match
+        if (!username || !password || (!confirm && !loginMode)) {
+            setAlert("All fields required!");
+            return;
+        } else if (password != confirm && !loginMode) {
+            setAlert("Passwords don't match!");
+            return;
+        }
+
         // login user
         if (loginMode) {
 
+            const loginUser = async () => {
+                try {
 
-            
+                    const config = {
+                        headers: {
+                            "Content-type" : "application/json",
+                        }
+                    }
+
+                    const { data } = await axios.post(
+                        'api/user/login',
+                        {
+                            username,
+                            password,
+                        },
+                        config
+                    );
+
+                    console.log(data);
+
+                    navigate('/chat', { 
+                        replace: false, 
+                        state: {
+                            id: data.id,
+                            username: data.username,
+                        },
+                    });
+                    
+                } catch (error) {
+
+                    if (error.response) {
+                        setAlert(error.response.data.message)
+                    }
+
+                }
+
+                
+
+            }
+
+            loginUser();
 
         // register user
         } else {
-
-            // check if all fields are filled or password match
-            if (!username || !password || !confirm) {
-                setAlert("All fields required!");
-                return;
-            } else if (password != confirm) {
-                setAlert("Passwords don't match!");
-                return;
-            }
 
 
             const registerUser = async () => {
@@ -84,10 +123,6 @@ export function Login() {
                         },
                         config
                     );
-
-                    console.log(data);
-                    console.log(data.id);
-                    console.log(data.username);
                    
                     navigate('/chat', { 
                         replace: false, 
@@ -98,9 +133,9 @@ export function Login() {
                     });
                 
                 } catch (error) {
-
+                    console.log()
                     if (error.response) {
-                        setAlert(error.response.data.reason)
+                        setAlert(error.response.data.message)
                     }
 
                 }
