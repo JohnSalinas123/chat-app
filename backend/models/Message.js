@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const messageSchema = new Schema({
-    sender: { type: Schema.Types.ObjectId, ref: 'User' },
+    username: String,
     text: String,
-    date: { type: Date, default: Date.now },
+    date: {type: Date, default: Date.now},
     
 });
 
