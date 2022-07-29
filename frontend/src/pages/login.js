@@ -63,22 +63,17 @@ export function Login() {
             const loginUser = async () => {
                 try {
 
-                    const config = {
-                        headers: {
-                            "Content-type" : "application/json",
-                        }
-                    }
-
                     const { data } = await axios.post(
                         'api/user/login',
                         {
                             username,
                             password,
-                        },
-                        config
+                        }
                     );
 
                     console.log(data);
+
+                    socket.emit("login", username);
 
                     navigate('/chat', { 
                         replace: false, 
@@ -109,20 +104,15 @@ export function Login() {
             const registerUser = async () => {
                 try {
 
-                    const config = {
-                        headers: {
-                            "Content-type" : "application/json",
-                        },
-                    }
-
                     const { data } = await axios.post(
                         '/api/user',
                         {
                             username,
                             password
-                        },
-                        config
+                        }
                     );
+
+                    socket.emit("signup", username)
                    
                     navigate('/chat', { 
                         replace: false, 
@@ -133,7 +123,7 @@ export function Login() {
                     });
                 
                 } catch (error) {
-                    console.log()
+                    console.log(error);
                     if (error.response) {
                         setAlert(error.response.data.message)
                     }
@@ -162,7 +152,7 @@ export function Login() {
 
         socket.emit("guest")
 
-        return () => socket.disconnect();
+        //return () => socket.disconnect();
     }, [])
 
     return (
