@@ -1,12 +1,18 @@
-# chat-app
+# Project: chat-app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+````
+Description: A chat web app with signup/login, with a persistent chat room. Built with the MERN stack.
+Plans: 
+ => Current there is only a single chat room, planning to implement user being able to enter a certain named chat room.
+ => Plan to host this small application on heroku.
 
-## Chat app using the MERN Stack
+````
 
-# Currently used technologies
--> React
--> Express
--> Mongoose
--> Socket.io
--> MongoDB
+````
+Currently used technologies
+ => React
+ => Express
+ => Mongoose
+ => Socket.io
+ => MongoDB
+````
