@@ -41,8 +41,6 @@ async function registerUser(req, res) {
 
 async function loginUser(req, res) {
 
-    console.log("Login?");
-
     const { username,password } = req.body;
 
     // check for empty fields
